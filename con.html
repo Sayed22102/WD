@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Contact Form</title>
+</head>
+<body>
+
+<div class="container">
+    <h2>Contact Us</h2>
+    <form action="#" method="post" id="contact-form">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+        <div class="form-group">
+            <label for="dropdown">Select Your Package:</label>
+            <select id="dropdown" name="dropdown" required>
+              <option value="none">Select Your Package</option>
+              <option value="bronze">Bronze</option>
+              <option value="silver">Silver</option>
+              <option value="gold">Gold</option>
+              <option value="custom">Custom</option>
+            </select>
+
+            <div class="form-group">
+              <label for="dropdown">Select Your Service:</label>
+              <select id="dropdown" name="dropdown" required>
+                <option value="none">Select Your Service</option>
+                <option value="Themed">Themed Events</option>
+                <option value="Marquee">Marquee Parties</option>
+                <option value="Special">Special Celebrations</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="fundraisers">Fundraisers</option>
+                <option value="bespoke">Bespoke Catering</option>
+                <option value="themes">Themes and Props</option>
+                <option value="sound">Sound and Lighting</option>
+                <option value="sound">Other</option>
+              </select>
+        </div>
+        <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="map">Location on Map:</label>
+            <div id="map"></div>
+        </div>
+        <button onclick="confirmAndRedirect()">Contact Us</button>
+    </form>
+      </p>
+  </form>
+</div>
+
+<script src="https://www.bing.com/api/maps/mapcontrol?key=AggkquNnnifc7iKAoxwXHugcB9Mn_4C62NW3uCYJkidLNJG-i7AKGt2a6JZ3fj26&callback=initMap" async defer></script>
+<script>
+    function initMap() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function (position) {
+                    var userLocation = new Microsoft.Maps.Location(position.coords.latitude, position.coords.longitude);
+                    var map = new Microsoft.Maps.Map(document.getElementById('map'), {
+                        center: userLocation,
+                        zoom: 14
+                    });
+
+                    // Add a pushpin for the user's location
+                    var pushpin = new Microsoft.Maps.Pushpin(userLocation);
+                    map.entities.push(pushpin);
+                },
+                function (error) {
+                    console.error('Error getting user location:', error.message);
+                    // Handle error, for example, show a default map or ask the user to input their location manually.
+                }
+            );
+        } else {
+            console.error('Geolocation is not supported by this browser.');
+            // Handle lack of geolocation support, for example, show a default map or ask the user to input their location manually.
+        }
+    }
+</script>
+<script>
+  function confirmAndRedirect() {
+      // Display a confirmation dialog
+      var isConfirmed = confirm("Are you sure you want to proceed?");
+
+      // If the user clicks "OK" in the confirmation dialog, redirect to another website
+      if (isConfirmed) {
+          window.location.href = "https://Sayed22102.github.io/WD"; // Replace with the desired URL
+      }
+  }
+</script>
+</body>
+</html>
